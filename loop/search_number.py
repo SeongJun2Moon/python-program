@@ -6,7 +6,7 @@
 출력값이 12의 배수만 되도록 한다.
 """
 
-from randomlist import RandomList
+from random_list import RandomList
 
 class SerchNumber(object):
     def __init__(self, num) -> None:

@@ -24,13 +24,8 @@ class Grade(object):
         self.eng = eng
         self.math = math
 
-    def get_answer(self):
-        lan = self.lan
-        eng = self.eng
-        math = self.math
-        sum = lan+eng+math
-        ave = sum/3
-        grade = ""
+    def print(self):
+        ave = (self.lan+self.eng+self.math)/3
         if ave >= 90:
             grade = "A"
         elif ave >=80 and ave < 90:
@@ -43,11 +38,7 @@ class Grade(object):
             grade = "E"
         else:
             grade = "F"
-        answer = f"{self.name} {lan} {eng} {math} {sum} {ave:.1f} {grade}" 
-        return answer
-
-    def print(self):
-        answer = self.get_answer()
+        answer = f"{self.name} {self.lan} {self.eng} {self.math} {self.lan+self.eng+self.math} {ave:.1f} {grade}" 
         print(f"{answer}")
 
     @staticmethod
@@ -61,8 +52,10 @@ class Grade(object):
 
     @staticmethod
     def get_grades(ls):
+        print("### 성적표 ###\n********************************\n이름 국어 영어 수학 총점 평균 학점\n********************************")
         for i in ls:
             i.print()
+        print("********************************\n")
 
     @staticmethod
     def print_menu():      
@@ -79,9 +72,7 @@ class Grade(object):
                 gd = Grade.new_grade()
                 ls.append(gd)
             elif menu == 2:
-                print("\n### 성적표 ###\n********************************\n이름 국어 영어 수학 총점 평균 학점\n********************************")
                 Grade.get_grades(ls)
-                print("********************************\n")
             elif menu == 3:
                 print("3.성적표 삭제\n")
             elif menu == 4:
