@@ -38,8 +38,7 @@ class Grade(object):
             grade = "E"
         else:
             grade = "F"
-        answer = f"{self.name} {self.lan} {self.eng} {self.math} {self.lan+self.eng+self.math} {ave:.1f} {grade}" 
-        print(f"{answer}")
+        print(f"{self.name} {self.lan} {self.eng} {self.math} {self.lan+self.eng+self.math} {ave:.1f} {grade}")
 
     @staticmethod
     def new_grade():
@@ -47,12 +46,12 @@ class Grade(object):
         lan = int(input("국어: "))
         eng = int(input("영어: "))
         math = int(input("수학: "))
-        print()
+        print("\n등록완료!\n")
         return Grade(name, lan, eng, math)
 
     @staticmethod
     def get_grades(ls):
-        print("### 성적표 ###\n********************************\n이름 국어 영어 수학 총점 평균 학점\n********************************")
+        print("\n### 성적표 ###\n********************************\n이름 국어 영어 수학 총점 평균 학점\n********************************")
         for i in ls:
             i.print()
         print("********************************\n")
@@ -60,8 +59,7 @@ class Grade(object):
     @staticmethod
     def print_menu():      
         print("###성적표어플###\n1.성적표 등록\n2.성적표 출력\n3.성적표 삭제\n4.종료")
-        menu = int(input(f"\n메뉴 선택: "))
-        return menu
+        return int(input(f"\n메뉴 선택: "))
 
     @staticmethod
     def main():
@@ -74,7 +72,7 @@ class Grade(object):
             elif menu == 2:
                 Grade.get_grades(ls)
             elif menu == 3:
-                print("3.성적표 삭제\n")
+                print("3.성적표 삭제(업뎃중..)\n")
             elif menu == 4:
                 print("ㅃ2")
                 break
