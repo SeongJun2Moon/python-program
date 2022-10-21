@@ -22,21 +22,11 @@ class Bmi(object):
         self.name = name
         self.cm = cm
         self.kg = kg
-        self.biman = ""
-
-    def execute(self):
-        self.biman = self.get_biman()
-        self.get_biman()
-        self.print_biman()
-
-    def get_bmi(self):
-        kg = self.kg
-        m = self.cm / 100
-        return kg / m ** 2
 
     def get_biman(self):
-        biman = ""
-        bmi = self.get_bmi()
+        kg = self.kg
+        m = self.cm / 100
+        bmi = kg / m ** 2
         if bmi >= 35:
             biman = "고도비만"
         elif bmi >= 30:
@@ -49,13 +39,13 @@ class Bmi(object):
             biman = "정상" 
         else:
             biman = "저체중" 
-        self.biman = biman
+        return biman
 
     def print_biman(self):
         name = self.name
         cm = self.cm
         kg = self.kg
-        biman = self.biman
+        biman = self.get_biman()
         title = "### 비만도 계산 ###"
         aster = "*"*40
         schema = "이름 키(cm) 몸무게(kg) 비만도"
@@ -63,11 +53,33 @@ class Bmi(object):
         print(f'{title} \n {aster} \n {schema} \n {aster} \n {result} \n {aster} ')
 
     @staticmethod
-    def main():
+    def new_bmi():
         name = input("이름: ")
         cm = int(input("키: "))
         kg = int(input("몸무게: "))
-        bmi = Bmi(name, cm, kg)
-        bmi.execute()
+        return Bmi(name, cm, kg)
+    @staticmethod
+    def get_bmi(ls):
+        for i in ls:
+            i.print_biman()
+    @staticmethod
+    def print_menu():
+        print("###비만도 등록표###\n1.비만도 등록\n2.비만도 출력\n3.비만도 삭제\n4.종료")
+        return int(input(f"\n메뉴 선택: "))
+    @staticmethod
+    def main():
+        ls = []
+        while True:
+            menu = Bmi.print_menu()
+            if menu == 1:
+                b = Bmi.new_bmi()
+                ls.append(b)
+                print('등록')
+            elif menu == 2:
+                Bmi.get_bmi(ls)
+                print("목록")
+            elif menu == 3:
+                print("삭제")
+            else: print("그런거없음")
 
 Bmi.main()
