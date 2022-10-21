@@ -10,43 +10,47 @@ class Member(object):
         self.name = name
 
     def print(self):
-        print(self.id, self.pw, self.name)
+        print(f"아이디:{self.id} 비밀번호:{self.pw} 이름:{self.name}")
+    @staticmethod
+    def delete_member(ls,name):
+        del ls[[i for i,j in enumerate(ls) if name == j.name][0]]
 
     @staticmethod
     def new_regist():
         id = input("아이디: ")
         pw = input("비밀 번호: ")
         name = input("이름: ")
-        print("등록 완료!")
+        print("등록 완료!\n")
         return Member(id, pw, name)
 
     @staticmethod
     def print_regist(ls):
-        for i in ls:
-            i.print()
+        [_.print() for _ in ls]
 
     @staticmethod
     def print_menu():
+        print("메뉴를 선택하세요\n1. 회원가입  2. 목록  3. 삭제  4. 종료")
         return int(input("메뉴: "))
 
     @staticmethod
     def main():
+        ls = []
         while True:
-            ls = []
             menu = Member.print_menu()
             if menu == 1:
                 print("회원 가입")
                 mb = Member.new_regist()
                 ls.append(mb)
             elif menu == 2:
-                print("목록")
+                print("\n###회원목록###")
                 Member.print_regist(ls)
+                print()
             elif menu == 3:
-                print("삭제")
+                Member.delete_member(ls,input("삭제할 사람: "))
             elif menu == 4:
                 print("종료")
                 break
-            else:print("그런거 없음")
+            else:print("그런거 없음\n")
 
 
 Member.main()
