@@ -23,9 +23,11 @@ class Contract(object):
         mail = input("이메일: ")
         adrr = input("주소: ")
         return Contract(name,pnum,mail,adrr)
+
     @staticmethod
     def get_user(ls):
         [_.print_user() for _ in ls]
+
     @staticmethod
     def print_menu():
         print("\n메뉴 선택 (1.등록 2.보기 3.삭제 4.종료)")
