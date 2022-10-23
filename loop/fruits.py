@@ -46,4 +46,5 @@ class Fruits(object):
         fruits = Fruits(search)
         fruits.print_menu()
 
+
 Fruits.main()
